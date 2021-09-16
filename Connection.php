@@ -2,19 +2,19 @@
 
 class Connection{
 
-    private $host, $username, $password;
+    private $dns, $username, $password;
     protected $link;
     
-    public function __construct($h, $u, $p){
+    public function __construct($d, $u, $p){
     
-        $this->host = $h;
+        $this->dns = $d;
         $this->username = $u;
         $this->password = $p;
     }
     
     public function connect(){
         try {
-            $this->link = new PDO(  $this->host,  $this->username,   $this->password);
+            $this->link = new PDO(  $this->dns,  $this->username,   $this->password);
             $this->link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo " vous etes connecte";
         } catch (\Throwable $th) {
